@@ -3,7 +3,9 @@
 /node_modules
 
 # environ
-.env*
+.env.dev
+.env.prod
+.env.test
 
 # Logs
 logs
