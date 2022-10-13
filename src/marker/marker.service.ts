@@ -67,7 +67,7 @@ class MarkerService {
     const atmosphere = await this.atmosphereRepository.findOneBy({
       id: marker.markers.staredMarkers[0].atmosphereId,
     });
-    const emotion = await this.atmosphereRepository.findOneBy({
+    const emotion = await this.emotionRepository.findOneBy({
       id: marker.markers.staredMarkers[0].emotionId,
     });
 
