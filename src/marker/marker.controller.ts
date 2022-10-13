@@ -19,9 +19,9 @@ import { CreateMarkerDto } from '@marker/marker.dto';
 class MarkerController {
   constructor(private readonly markerService: MarkerService) {}
 
-  @Get('/contribution')
-  async findContribution() {
-    return await this.markerService.findContribution(1);
+  @Get('/contribution/:userId')
+  async findContribution(@Param('userId', ParseIntPipe) userId) {
+    return await this.markerService.findContribution(userId);
   }
 
   @Get('/:markerId')
