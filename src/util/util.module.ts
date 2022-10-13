@@ -4,6 +4,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import EnvConfig from '@util/env.service';
 import Entities from '@util/entity';
+import { ImageService } from '@util/image.service';
+import UtilService from '@util/util.service';
+import Repositories from '@util/repository';
 
 @Global()
 @Module({
@@ -11,9 +14,9 @@ import Entities from '@util/entity';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath:
-        process.env.NODE_ENV === 'dev'
+        process.env.NODE_ENV === 'development'
           ? '.env.dev'
-          : process.env.NODE_ENV === 'prod'
+          : process.env.NODE_ENV === 'production'
           ? '.env.prod'
           : '.env.test',
       load: [EnvConfig],
@@ -38,7 +41,7 @@ import Entities from '@util/entity';
       }),
     }),
   ],
-  providers: [],
-  exports: [ConfigModule],
+  providers: [UtilService, ImageService, ...Repositories],
+  exports: [ConfigModule, UtilService, ImageService, ...Repositories],
 })
 export class UtilModule {}

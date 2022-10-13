@@ -1,17 +1,18 @@
 import {
   Entity,
-  PrimaryColumn,
   CreateDateColumn,
   UpdateDateColumn,
   Column,
   OneToMany,
+  PrimaryGeneratedColumn,
+  OneToOne,
 } from 'typeorm';
 import UserMarkers from '@util/entity/user.marker.entity';
 import StaredMarkers from '@util/entity/stared.marker.entity';
 
 @Entity('markers')
 export default class Markers {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column('double')
@@ -29,9 +30,9 @@ export default class Markers {
   @UpdateDateColumn()
   updatedAt: Date;
 
+  @OneToOne(() => StaredMarkers, (staredMarkers) => staredMarkers.markers)
+  staredMarkers: StaredMarkers;
+
   @OneToMany(() => UserMarkers, (userMarkers) => userMarkers.markers)
   userMarkers: UserMarkers[];
-
-  @OneToMany(() => StaredMarkers, (staredMarkers) => staredMarkers.markers)
-  staredMarkers: StaredMarkers[];
 }

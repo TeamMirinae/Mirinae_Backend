@@ -1,16 +1,16 @@
 import {
   Entity,
-  PrimaryColumn,
   CreateDateColumn,
   UpdateDateColumn,
   Column,
   OneToMany,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import StaredMarkers from '@util/entity/stared.marker.entity';
 
 @Entity('atmospheres')
 export default class Atmospheres {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column('int')

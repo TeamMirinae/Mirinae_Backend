@@ -1,11 +1,12 @@
 import {
   Entity,
-  PrimaryColumn,
   CreateDateColumn,
   UpdateDateColumn,
   Column,
   ManyToOne,
   JoinColumn,
+  PrimaryGeneratedColumn,
+  OneToOne,
 } from 'typeorm';
 import Markers from '@util/entity/marker.entity';
 import Atmospheres from '@util/entity/atmosphere.entity';
@@ -13,7 +14,7 @@ import Emotions from '@util/entity/emotion.entity';
 
 @Entity('stared_markers')
 export default class StaredMarkers {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column('int')
@@ -31,7 +32,7 @@ export default class StaredMarkers {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => Markers, (markers) => markers.staredMarkers)
+  @OneToOne(() => Markers, (markers) => markers.staredMarkers)
   @JoinColumn({ name: 'markerId', referencedColumnName: 'id' })
   markers: Markers;
 
