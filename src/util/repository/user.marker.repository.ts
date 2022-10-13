@@ -23,6 +23,7 @@ export default class UserMarkerRepository extends Repository<UserMarkers> {
       .leftJoinAndSelect('userMarkers.markers', 'markers')
       .leftJoinAndSelect('markers.staredMarkers', 'staredMarkers')
       .where('userMarkers.markerId = :markerId', { markerId })
+      .andWhere('userMarkers.userId = :userId', { userId: 1 })
       .getOne();
   }
 

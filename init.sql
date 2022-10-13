@@ -83,21 +83,21 @@ INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, image
 	(23, 1, 9, 6, 3, "https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image8", now(), now());
 
 INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, imageUrl, createdAt, updatedAt) VALUES
-    (24, 1, 10, 256, 5, "https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image9", now(), now()),
-    (25, 2, 10, 256, 1, "https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image9", now(), now()),
-    (26, 3, 10, 256, 2, "https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image9", now(), now()),
-    (27, 4, 10, 260, 6, "https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image9", now(), now()),
-    (28, 5, 10, 256, 2, "https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image9", now(), now());
+    (24, 1, 10, 64, 5, "https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image9", now(), now()),
+    (25, 2, 10, 64, 1, "https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image9", now(), now()),
+    (26, 3, 10, 64, 2, "https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image9", now(), now()),
+    (27, 4, 10, 64, 6, "https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image9", now(), now()),
+    (28, 5, 10, 64, 2, "https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image9", now(), now());
 
 ## 감정
 
 INSERT INTO emotions (id, bitIndex, standard, dialect, createdAt, updatedAt) VALUES
     (1, 0, "행복해요.", "행복하우다.", now(), now()),
-    (2, 1, "설렙니다.", "설레우다.", now(), now()),
-    (3, 2, "평온", "평온햄수다.", now(), now()),
-    (4, 3, "신남", "지꺼지다.", now(), now()),
-    (5, 4, "감동", "감동적이우다.", now(), now()),
-    (6, 5, "덤덤", "덤덤햄수다.", now(), now());
+    (2, 1, "설레요.", "설레우다.", now(), now()),
+    (3, 2, "평온해요.", "평온햄수다.", now(), now()),
+    (4, 3, "신나요.", "지꺼지다.", now(), now()),
+    (5, 4, "감동이예요.", "감동적이우다.", now(), now()),
+    (6, 5, "덤덤해요.", "덤덤햄수다.", now(), now());
 
 ## 분위기
 
