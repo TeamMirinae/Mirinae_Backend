@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Get,
@@ -20,6 +21,8 @@ class MarkerController {
 
   @Get('/contribution/:userId')
   async findContribution(@Param('userId', ParseIntPipe) userId) {
+    if (!userId) throw new BadRequestException();
+
     return await this.markerService.findContribution(userId);
   }
 
@@ -28,6 +31,8 @@ class MarkerController {
     @Res() res,
     @Param('markerId', ParseIntPipe) markerId: number,
   ) {
+    if (!markerId) throw new BadRequestException();
+
     const result = await this.markerService.findMarker(markerId);
 
     res.status(result.status).json(result.content);
@@ -40,6 +45,8 @@ class MarkerController {
     @Param('userId', ParseIntPipe) userId,
     @UploadedFile() file: Express.Multer.File,
   ) {
+    if (!userId || !file) throw new BadRequestException();
+
     const createMarkerDto: CreateMarkerDto = new CreateMarkerDto(body);
 
     return await this.markerService.createMarker(userId, createMarkerDto, file);
