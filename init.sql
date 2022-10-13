@@ -18,18 +18,71 @@ INSERT INTO users (id, nickname, createdAt, updatedAt) VALUES
 	(2, "연호", now(), now()),
 	(3, "은주", now(), now()),
 	(4, "동수", now(), now()),
-	(5, "준형", now(), now());
+	(5, "준형", now(), now()),
+	(6, "구름", now(), now()),
 
 
 ## 마커
 
-INSERT INTO markers (id, latitude, longitude, count, createdAt, updatedAt) VALUES (1, 33.4650824, 126.9036130, 4, now(), now());
+INSERT INTO markers (id, latitude, longitude, count, createdAt, updatedAt) VALUES
+	(1, 33.4650824, 126.9036130, 4, now(), now()),
+	(2, 33.5037769, 126.7698123, 4, now(), now()),
+	(3, 33.4167590, 126.6686849, 1, now(), now()),
+	(4, 33.3372665, 126.7408476, 1, now(), now()),
+	(5, 33.3240599, 126.6148054, 5, now(), now()),
+	(6, 33.3402501, 126.5350838, 4, now(), now()),
+	(7, 33.4284365, 126.4673892, 1, now(), now()),
+	(8, 33.3838665, 126.4269576, 5, now(), now()),
+	(9, 33.2997189, 126.3882486, 1, now(), now()),
+	(10, 33.3241678, 126.2754035, 5, now(), now());
 
 INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, imageUrl, createdAt, updatedAt) VALUES
-	(1, 2, 1, 6, 3, "https://team-mirinae.s3.amazonaws.com/1/1665676468690", now(), now()),
-	(2, 3, 1, 10, 3, "https://team-mirinae.s3.amazonaws.com/1/1665676468690", now(), now()),
-	(3, 4, 1, 18, 3, "https://team-mirinae.s3.amazonaws.com/1/1665676468690", now(), now()),
-	(4, 5, 1, 34, 3, "https://team-mirinae.s3.amazonaws.com/1/1665676468690", now(), now());
+	(1, 1, 1, 6, 3, "https://team-mirinae.s3.amazonaws.com/test-image0", now(), now());
+
+INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, imageUrl, createdAt, updatedAt) VALUES
+	(2, 2, 2, 6, 4, "https://team-mirinae.s3.amazonaws.com/test-image1", now(), now()),
+	(3, 3, 2, 10, 3, "https://team-mirinae.s3.amazonaws.com/test-image1", now(), now()),
+	(4, 4, 2, 18, 4, "https://team-mirinae.s3.amazonaws.com/test-image1", now(), now()),
+	(5, 5, 2, 34, 3, "https://team-mirinae.s3.amazonaws.com/test-image1", now(), now());
+
+INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, imageUrl, createdAt, updatedAt) VALUES
+	(6, 1, 3, 6, 3, "https//team-mirinae.s3.amazonaws.com/test-image2", now(), now());
+
+INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, imageUrl, createdAt, updatedAt) VALUES
+	(7, 1, 4, 6, 3, "https//team-mirinae.s3.amazonaws.com/test-image3", now(), now());
+
+INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, imageUrl, createdAt, updatedAt) VALUES
+    (8, 1, 5, 12, 5, "https//team-mirinae.s3.amazonaws.com/test-image4", now(), now()),
+	(9, 2, 5, 12, 1, "https://team-mirinae.s3.amazonaws.com/test-image4", now(), now()),
+	(10, 3, 5, 72, 2, "https://team-mirinae.s3.amazonaws.com/test-image4", now(), now()),
+	(11, 4, 5, 260, 6, "https://team-mirinae.s3.amazonaws.com/test-image4", now(), now()),
+	(12, 5, 5, 48, 2, "https://team-mirinae.s3.amazonaws.com/test-image4", now(), now());
+
+INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, imageUrl, createdAt, updatedAt) VALUES
+	(13, 2, 6, 130, 5, "https://team-mirinae.s3.amazonaws.com/test-image5", now(), now()),
+	(14, 3, 6, 132, 5, "https://team-mirinae.s3.amazonaws.com/test-image5", now(), now()),
+	(15, 4, 6, 132, 5, "https://team-mirinae.s3.amazonaws.com/test-image5", now(), now()),
+	(16, 5, 6, 132, 5, "https://team-mirinae.s3.amazonaws.com/test-image5", now(), now());
+
+INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, imageUrl, createdAt, updatedAt) VALUES
+	(17, 1, 7, 6, 3, "https//team-mirinae.s3.amazonaws.com/test-image6", now(), now());
+
+INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, imageUrl, createdAt, updatedAt) VALUES
+    (18, 1, 8, 16, 5, "https//team-mirinae.s3.amazonaws.com/test-image7", now(), now()),
+	(19, 2, 8, 16, 1, "https://team-mirinae.s3.amazonaws.com/test-image7", now(), now()),
+	(20, 3, 8, 16, 2, "https://team-mirinae.s3.amazonaws.com/test-image7", now(), now()),
+	(21, 4, 8, 16, 6, "https://team-mirinae.s3.amazonaws.com/test-image7", now(), now()),
+	(22, 5, 8, 16, 2, "https://team-mirinae.s3.amazonaws.com/test-image7", now(), now());
+
+INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, imageUrl, createdAt, updatedAt) VALUES
+	(23, 1, 9, 6, 3, "https//team-mirinae.s3.amazonaws.com/test-image8", now(), now());
+
+INSERT INTO user_markers (id, userId, markerId, atmosphereBit, emotionBit, imageUrl, createdAt, updatedAt) VALUES
+    (24, 1, 10, 256, 5, "https//team-mirinae.s3.amazonaws.com/test-image9", now(), now()),
+    (25, 2, 10, 256, 1, "https://team-mirinae.s3.amazonaws.com/test-image9", now(), now()),
+    (26, 3, 10, 256, 2, "https://team-mirinae.s3.amazonaws.com/test-image9", now(), now()),
+    (27, 4, 10, 260, 6, "https://team-mirinae.s3.amazonaws.com/test-image9", now(), now()),
+    (28, 5, 10, 256, 2, "https://team-mirinae.s3.amazonaws.com/test-image9", now(), now());
 
 ## 감정
 

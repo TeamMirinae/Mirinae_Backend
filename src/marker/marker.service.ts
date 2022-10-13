@@ -65,10 +65,10 @@ class MarkerService {
     }
 
     const atmosphere = await this.atmosphereRepository.findOneBy({
-      id: marker.markers.staredMarkers.atmosphereId,
+      id: marker.markers.staredMarkers[0].atmosphereId,
     });
     const emotion = await this.atmosphereRepository.findOneBy({
-      id: marker.markers.staredMarkers.emotionId,
+      id: marker.markers.staredMarkers[0].emotionId,
     });
 
     return {
@@ -101,7 +101,7 @@ class MarkerService {
       );
 
       userAtmosphere.map((value) => {
-        atmosphere[value];
+        atmosphere[value] = atmosphere[value] + 1;
       });
       emotion[userMarker.emotionBit]++;
     });

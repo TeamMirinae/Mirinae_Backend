@@ -26,7 +26,7 @@ export class ImageService {
       .upload({
         Bucket: this.configService.get('s3Config.name'),
         Key: filename,
-        Body: await sharp(image).resize(306, 123).toBuffer(),
+        Body: image,
         ACL: 'public-read',
         ContentType: mimeType,
         ContentDisposition: 'inline',

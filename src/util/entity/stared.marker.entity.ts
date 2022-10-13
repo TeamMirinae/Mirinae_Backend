@@ -6,7 +6,6 @@ import {
   ManyToOne,
   JoinColumn,
   PrimaryGeneratedColumn,
-  OneToOne,
 } from 'typeorm';
 import Markers from '@util/entity/marker.entity';
 import Atmospheres from '@util/entity/atmosphere.entity';
@@ -32,7 +31,7 @@ export default class StaredMarkers {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToOne(() => Markers, (markers) => markers.staredMarkers)
+  @ManyToOne(() => Markers, (markers) => markers.staredMarkers)
   @JoinColumn({ name: 'markerId', referencedColumnName: 'id' })
   markers: Markers;
 
