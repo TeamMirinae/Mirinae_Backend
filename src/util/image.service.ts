@@ -21,7 +21,6 @@ export class ImageService {
     image: Buffer,
     mimeType: string,
   ): Promise<string> {
-    console.log(this.configService.get('s3Config'));
     const result = await this.s3
       .upload({
         Bucket: this.configService.get('s3Config.name'),

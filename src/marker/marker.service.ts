@@ -2,6 +2,7 @@ import {
   BadRequestException,
   ForbiddenException,
   Injectable,
+  NotFoundException,
 } from '@nestjs/common';
 
 import { ImageService } from '@util/image.service';
@@ -30,14 +31,26 @@ class MarkerService {
   ) {}
 
   async findContribution(userId: number) {
-    return this.userMarkerRepository.findContribution(userId);
+    const contributions = await this.userMarkerRepository.findContribution(
+      userId,
+    );
+
+    return contributions.map((contribution) => {
+      return {
+        id: contribution.markers.id,
+        latitude: contribution.markers.latitude,
+        longitude: contribution.markers.longitude,
+        count: contribution.markers.count,
+      };
+    });
   }
 
   async findMarker(markerId: number) {
     const marker = await this.userMarkerRepository.findContributionDetail(
       markerId,
     );
-    console.log(marker);
+
+    if (!marker) throw new NotFoundException();
 
     if (!marker.markers.staredMarkers) {
       return {
@@ -82,21 +95,16 @@ class MarkerService {
     const atmosphere: number[] = new Array<number>(8).fill(0);
     const emotion: number[] = new Array<number>(6).fill(0);
 
-    console.log(marker);
-
     marker.userMarkers.map((userMarker: UserMarkers) => {
       const userAtmosphere = this.utilService.transferDecimal(
         userMarker.atmosphereBit,
       );
-      console.log(userAtmosphere);
 
       userAtmosphere.map((value) => {
         atmosphere[value];
       });
       emotion[userMarker.emotionBit]++;
     });
-    console.log(atmosphere);
-    console.log(emotion);
 
     let atmosphereIdx = -1;
     let emotionIdx = -1;
@@ -184,7 +192,6 @@ class MarkerService {
             file.mimetype,
           )
           .then(async (location: string) => {
-            console.log(location);
             const userMarker: UserMarkers =
               await this.userMarkerRepository.findOneBy({
                 id: result.raw['insertId'],
