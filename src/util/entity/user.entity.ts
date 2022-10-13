@@ -1,16 +1,16 @@
 import {
   Entity,
-  PrimaryColumn,
   CreateDateColumn,
   UpdateDateColumn,
   Column,
   OneToMany,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import UserMarkers from '@util/entity/user.marker.entity';
 
 @Entity('users')
 export default class Users {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column('varchar', { length: 20 })

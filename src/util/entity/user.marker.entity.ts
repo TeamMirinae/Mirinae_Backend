@@ -1,11 +1,11 @@
 import {
   Entity,
-  PrimaryColumn,
   CreateDateColumn,
   UpdateDateColumn,
   Column,
   JoinColumn,
   ManyToOne,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 
 import Users from '@util/entity/user.entity';
@@ -13,7 +13,7 @@ import Markers from '@util/entity/marker.entity';
 
 @Entity('user_markers')
 export default class UserMarkers {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column('int')
@@ -27,6 +27,9 @@ export default class UserMarkers {
 
   @Column('int')
   emotionBit: number;
+
+  @Column('varchar', { length: 200 })
+  imageUrl: string;
 
   @CreateDateColumn()
   createdAt: Date;

@@ -19,7 +19,8 @@
     "baseUrl": "./",
     "paths": {
       "@src/*": ["./src/*"],
-      "@util/*": ["./src/util/*"]
+      "@util/*": ["./src/util/*"],
+      "@marker/*": ["./src/marker/*"]
     }
   }
 }
