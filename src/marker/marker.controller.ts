@@ -5,7 +5,6 @@ import {
   Param,
   ParseIntPipe,
   Post,
-  Req,
   Res,
   UploadedFile,
   UseInterceptors,
@@ -14,10 +13,14 @@ import { FileInterceptor } from '@nestjs/platform-express';
 
 import MarkerService from '@marker/marker.service';
 import { CreateMarkerDto } from '@marker/marker.dto';
+import { ImageService } from '@util/image.service';
 
 @Controller('marker')
 class MarkerController {
-  constructor(private readonly markerService: MarkerService) {}
+  constructor(
+    private readonly markerService: MarkerService,
+    private readonly imageService: ImageService,
+  ) {}
 
   @Get('/contribution/:userId')
   async findContribution(@Param('userId', ParseIntPipe) userId) {

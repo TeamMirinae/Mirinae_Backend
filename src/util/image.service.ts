@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as AWS from 'aws-sdk';
+import * as sharp from 'sharp';
 
 @Injectable()
 export class ImageService {
@@ -25,7 +26,7 @@ export class ImageService {
       .upload({
         Bucket: this.configService.get('s3Config.name'),
         Key: filename,
-        Body: image,
+        Body: await sharp(image).resize(306, 123).toBuffer(),
         ACL: 'public-read',
         ContentType: mimeType,
         ContentDisposition: 'inline',
