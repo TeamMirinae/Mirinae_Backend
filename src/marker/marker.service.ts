@@ -52,7 +52,7 @@ class MarkerService {
 
     if (!marker) throw new NotFoundException();
 
-    if (!marker.markers.staredMarkers) {
+    if (marker.markers.staredMarkers.length === 0) {
       return {
         status: 200,
         content: {
