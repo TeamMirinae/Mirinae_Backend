@@ -5,10 +5,11 @@ export class CreateMarkerDto {
   atmosphere: number[];
 
   constructor(json: any) {
-    this.latitude = parseFloat(json['latitude']);
-    this.longitude = parseFloat(json['longitude']);
-    this.emotion = parseInt(json['emotion'], 10);
+    this.latitude = parseFloat(json['latitude'].replace(/"/g, ''));
+    this.longitude = parseFloat(json['longitude'].replace(/"/g, ''));
+    this.emotion = parseInt(json['emotion'].replace(/"/g, ''), 10);
     this.atmosphere = json['atmosphere']
+      .replace(/"/g, '')
       .split(',')
       .map((value: string) => parseInt(value, 10));
   }
