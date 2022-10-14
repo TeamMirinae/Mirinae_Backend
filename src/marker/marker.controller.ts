@@ -47,7 +47,7 @@ class MarkerController {
   ) {
     if (!userId || !file) throw new BadRequestException();
 
-    const createMarkerDto: CreateMarkerDto = new CreateMarkerDto(body);
+    const createMarkerDto = new CreateMarkerDto(body);
 
     return await this.markerService.createMarker(userId, createMarkerDto, file);
   }
