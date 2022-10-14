@@ -39,17 +39,12 @@ class MarkerController {
   }
 
   @Post('/create/:userId')
-  @UseInterceptors(FileInterceptor('image'))
-  async createUserMarker(
-    @Body() body,
-    @Param('userId', ParseIntPipe) userId,
-    @UploadedFile() file: Express.Multer.File,
-  ) {
-    if (!userId || !file) throw new BadRequestException();
+  async createUserMarker(@Body() body, @Param('userId', ParseIntPipe) userId) {
+    if (!userId) throw new BadRequestException();
 
-    const createMarkerDto = new CreateMarkerDto(body);
+    const createMarkerDto: CreateMarkerDto = body; //new CreateMarkerDto(body);
 
-    return await this.markerService.createMarker(userId, createMarkerDto, file);
+    return await this.markerService.createMarker(userId, createMarkerDto);
   }
 }
 

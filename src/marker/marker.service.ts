@@ -133,19 +133,7 @@ class MarkerService {
     await this.staredMarkerRepository.save(staredMarker);
   }
 
-  async createMarker(
-    userId: number,
-    createMarkerDto: CreateMarkerDto,
-    file: Express.Multer.File,
-  ) {
-    const extension = file.mimetype.replace(/image\//gi, '.');
-
-    if (
-      !file ||
-      (extension !== '.jpeg' && extension !== '.jpg' && extension !== '.png')
-    )
-      throw new BadRequestException();
-
+  async createMarker(userId: number, createMarkerDto: CreateMarkerDto) {
     const aroundMarker = await this.markerRepository.findAroundMarker(
       createMarkerDto.latitude,
       createMarkerDto.longitude,
@@ -163,7 +151,7 @@ class MarkerService {
 
     if (
       await this.userMarkerRepository.findOneBy({
-        userId: 1,
+        userId: userId,
         markerId: markerId,
       })
     )
@@ -174,36 +162,18 @@ class MarkerService {
       await this.markerRepository.save(aroundMarker);
     }
 
-    this.userMarkerRepository
-      .createUserMarker({
-        userId,
-        markerId,
-        atmosphereBit: this.utilService.transferBinary(
-          createMarkerDto.atmosphere,
-        ),
-        emotionBit: createMarkerDto.emotion,
-        imageUrl: '',
-      })
-      .then(async (result) => {
-        await this.imageService
-          .uploadImage(
-            `${userId.toString()}/${new Date().getTime()}`,
-            file.buffer,
-            file.mimetype,
-          )
-          .then(async (location: string) => {
-            const userMarker: UserMarkers =
-              await this.userMarkerRepository.findOneBy({
-                id: result.raw['insertId'],
-              });
-
-            userMarker.imageUrl = location;
-
-            await this.userMarkerRepository.save(userMarker);
-          })
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => console.log(err));
+    await this.userMarkerRepository.createUserMarker({
+      userId,
+      markerId,
+      atmosphereBit: this.utilService.transferBinary(
+        createMarkerDto.atmosphere,
+      ),
+      emotionBit: createMarkerDto.emotion,
+      // todo: 인터넷 환경이 좋지 못해 통신 지연시간이 너무 오래 걸려 추후 구현 사항 롤백 예정
+      imageUrl: `https://team-mirinae.s3.ap-northeast-2.amazonaws.com/test-image${Math.floor(
+        Math.random() * 10,
+      )}`,
+    });
 
     const result: Markers =
       await this.markerRepository.findMarkerWithContributors(markerId);
