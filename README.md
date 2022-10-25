@@ -55,6 +55,12 @@ s-->>m: 저장된 장소에 대해 위치, 상세 정보 응답
 
 <br>
 
+### 💾 Database ERD
+
+![Mirinae_Diagram](https://user-images.githubusercontent.com/74334399/197690450-be5c3707-c0ec-47e8-8ec4-4baca9f1a858.png)
+
+<br>
+
 ## 🛠 Backend 개발 환경
 
 <p>
@@ -65,5 +71,4 @@ s-->>m: 저장된 장소에 대해 위치, 상세 정보 응답
 </p>
 
 - [API 명세](https://choiyeonho.notion.site/API-bb42fdcc9b104b19b7cc73c2f6f41efa)
-- [Database ERD](https://dbdiagram.io/d/6346f44cf0018a1c5fee5024)
 - [DB 초기 데이터](https://choiyeonho.notion.site/Static-Data-Set-6c9a6fc3bc1543798742eb66d23b8cd7)
