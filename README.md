@@ -57,7 +57,7 @@ s-->>m: 저장된 장소에 대해 위치, 상세 정보 응답
 
 ### 💾 Database ERD
 
-![Mirinae_Diagram](https://user-images.githubusercontent.com/74334399/197690450-be5c3707-c0ec-47e8-8ec4-4baca9f1a858.png)
+![Mirinae_Diagram (1)](https://user-images.githubusercontent.com/74334399/197976981-0fa81714-83bf-4800-bad8-a3e7d995a5a9.png)
 
 <br>
 
